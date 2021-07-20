@@ -1,7 +1,7 @@
 package com.kotlin.andi.mymovies.di
 
-import android.database.sqlite.SQLiteDatabase
 import androidx.room.Room
+import com.kotlin.andi.mymovies.BuildConfig
 import com.kotlin.andi.mymovies.data.MovieRepository
 import com.kotlin.andi.mymovies.data.local.LocalDataSource
 import com.kotlin.andi.mymovies.data.local.room.MovieDatabase
@@ -52,7 +52,7 @@ val networkModule = module {
     }
     single {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.themoviedb.org/3/")
+            .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(get())
             .build()

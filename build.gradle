@@ -8,6 +8,7 @@ buildscript {
     ext.room_version = '2.3.0'
     ext.arch_lifecycle_version = '2.3.1'
     ext.live_data_lifecycle_version = "2.3.1"
+    ext.pagingVersion = '2.1.2'
     repositories {
         google()
         jcenter()

@@ -1,9 +1,8 @@
 package com.kotlin.andi.mymovies.data.remote.api
 
-import com.kotlin.andi.mymovies.data.remote.ResponseGenre
 import com.kotlin.andi.mymovies.data.remote.ResponseMovies
+import com.kotlin.andi.mymovies.data.remote.response.ResponseGenre
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
@@ -12,9 +11,10 @@ interface ApiService {
         @Query("api_key") apiKey: String
     ): ResponseGenre
 
-    @GET("search/collection?api_key={api_key}&language=en-US&query={query}")
+    @GET("search/movie")
     suspend fun getMovies(
-        @Path("api_key") apiKey: String,
-        @Path("query") query: String,
+        @Query("api_key") apiKey: String,
+        @Query("language=en-US") language: String,
+        @Query("query") query: String
     ): ResponseMovies
 }
