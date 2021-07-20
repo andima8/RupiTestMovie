@@ -22,7 +22,7 @@ interface MovieDao {
     @Query("SELECT * FROM genre_table")
     fun readGenre(): DataSource.Factory<Int, GenreEntity>
 
-    @Query("SELECT * FROM movie_table WHERE genre = :genre")
+    @Query("SELECT * FROM movie_table WHERE genre = :genre ORDER BY title ASC")
     fun readMovie(genre: String): DataSource.Factory<Int, MovieEntity>
 
 }

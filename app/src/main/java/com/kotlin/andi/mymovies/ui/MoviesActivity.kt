@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kotlin.andi.mymovies.databinding.ActivityMoviesBinding
 import com.kotlin.andi.mymovies.domain.model.Genre
+import com.kotlin.andi.mymovies.ui.DetailActivity.Companion.EXTRA_MOVIE
 import com.kotlin.andi.mymovies.ui.adapter.MoviesAdapter
 import com.kotlin.andi.mymovies.utils.invisible
 import com.kotlin.andi.mymovies.utils.visible
@@ -34,8 +35,8 @@ class MoviesActivity : AppCompatActivity() {
         genre = dataMovie.name.toString()
 
         val movieAdapter = MoviesAdapter {
-            val movieIntent = Intent(this, MoviesActivity::class.java)
-            movieIntent.putExtra(EXTRA_GENRE, it)
+            val movieIntent = Intent(this, DetailActivity::class.java)
+            movieIntent.putExtra(EXTRA_MOVIE, it)
             startActivity(movieIntent)
         }
         binding.progressbarMovies.visible()
