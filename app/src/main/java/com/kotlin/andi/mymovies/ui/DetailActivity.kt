@@ -31,15 +31,9 @@ class DetailActivity : AppCompatActivity() {
 
     private fun showDetail(data: Movie) {
         with(binding) {
-            Glide.with(applicationContext)
-                .load(BuildConfig.BASE_IMG_URL + data.posterPath)
-                .apply(
-                    RequestOptions.placeholderOf(R.drawable.ic_loading)
-                        .error(R.drawable.ic_error)
-                )
-                .into(detailMovieImg)
+            imageLoad(data)
 
-            detailMovieLanguage.text = data.originalLanguage
+            detailMovieLanguage.text = data.releaseDate
             tvRating.text = (data.voteAverage?.div(2)).toString()
             detailMovieRating.rating = data.voteAverage?.div(2) ?: 0f
             detailMovieDesc.text = data.overview
@@ -55,5 +49,26 @@ class DetailActivity : AppCompatActivity() {
                 setExpandedTitleTextAppearance(R.style.Collapse_Title)
             }
         }
+    }
+
+    private fun imageLoad(data: Movie) {
+        if (data.posterPath != "") {
+            Glide.with(applicationContext)
+                .load(BuildConfig.BASE_IMG_URL + data.posterPath)
+                .apply(
+                    RequestOptions.placeholderOf(R.drawable.ic_loading)
+                        .error(R.drawable.ic_error)
+                )
+                .into(binding.detailMovieImg)
+        } else {
+            Glide.with(applicationContext)
+                .load(BuildConfig.BASE_IMG_URL + data.backdropPath)
+                .apply(
+                    RequestOptions.placeholderOf(R.drawable.ic_loading)
+                        .error(R.drawable.ic_error)
+                )
+                .into(binding.detailMovieImg)
+        }
+
     }
 }

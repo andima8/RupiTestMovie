@@ -22,7 +22,7 @@ class MovieRepository(
 
     companion object {
         const val LOAD_SIZE = 5
-        const val PAGE_SIZE = 5
+        //const val PAGE_SIZE = 5
     }
 
     override fun getGenre(): Flow<Resource<PagedList<Genre>>> =
@@ -55,8 +55,8 @@ class MovieRepository(
             override fun loadFromDB(): Flow<PagedList<Movie>> {
                 val config = PagedList.Config.Builder()
                     .setEnablePlaceholders(false)
-                    .setInitialLoadSizeHint(5)
-                    .setPageSize(5)
+                    .setInitialLoadSizeHint(LOAD_SIZE)
+                    .setPageSize(LOAD_SIZE)
                     .build()
                 return LivePagedListBuilder(localDataSource.getMovie(query).map {
                     DataMapper.mapMovieEntitiesToMovieDomain(it,query)

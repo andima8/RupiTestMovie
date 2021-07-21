@@ -22,4 +22,11 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/colorTextTertiary</item>
     </style>
+
+    <!--Rating bar-->
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="ratingBarStyle">@style/Widget.AppCompat.RatingBar.Small</item>
+        <item name="colorControlNormal">@color/lightGrey</item>
+        <item name="colorControlActivated">@color/colorDuskYellow</item>
+    </style>
 </resources>
